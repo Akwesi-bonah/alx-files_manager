@@ -1,12 +1,12 @@
-import express from 'express';
-import allRoutes from './routes/index';
+import router from './routes/index';
 
-const server = express();
-const PORT = process.env.PORT || 5000;
+const express = require('express');
 
-allRoutes(server);
+const app = express();
+const port = process.env.PORT || 5000;
 
-export default server;
-server.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+router(app);
+
+app.listen(port, () => {
+  console.log(`Listening at http://localhost:${port}`);
 });

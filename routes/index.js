@@ -1,8 +1,15 @@
+import express from 'express';
 import AppController from '../controllers/AppController';
+import UsersController from '../controllers/UsersController';
 
-const allRoutes = (api) => {
-  api.get('/status', AppController.getStatus);
-  api.get('/stats', AppController.getStats);
-};
+const router = express.Router();
 
-export default allRoutes;
+// Middleware to parse JSON requests
+router.use(express.json());
+
+// Routes
+router.get('/status', AppController.getStatus);
+router.get('/stats', AppController.getStats);
+router.post('/users', UsersController.postNew);
+
+export default router;
