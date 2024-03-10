@@ -16,7 +16,7 @@ class DBClient {
     return this.client.isConnected();
   }
 
-  async nbusers() {
+  async nbUsers() {
     return this.client.db(this.database).collection('users').countDocuments();
   }
 
