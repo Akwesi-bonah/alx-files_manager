@@ -10,7 +10,7 @@ class DBClient {
 
     this.connect();
   }
-
+  // connect to the database
   async connect() {
     try {
       await this.client.connect();
@@ -20,10 +20,12 @@ class DBClient {
     }
   }
 
+  // check if the server is alive
   isAlive() {
     return this.client.isConnected();
   }
 
+  // get all the documents in a collection
   async nbDocuments(collectionName) {
     try {
       const collection = this.client.db(this.database).collection(collectionName);
@@ -33,11 +35,12 @@ class DBClient {
       throw error; // Propagate the error for better error handling in the application
     }
   }
-
+  // get the number of users
   async nbUsers() {
     return this.nbDocuments('users');
   }
 
+  // get the number of files
   async nbFiles() {
     return this.nbDocuments('files');
   }
